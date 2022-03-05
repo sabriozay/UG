@@ -1,0 +1,23 @@
+﻿@model List<UG.DAL.Entities.Customer>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@foreach (var item in Model)
+{
+    
+    <b>@item.UNVAN --</b>
+
+   @foreach (var QuantityItem in item.CustomerInvoices)
+   {
+       @if (QuantityItem!=null)
+      {
+       <b>@QuantityItem.FATURA_TARIHI --</b>
+       <b>@QuantityItem.FATURA_TUTARI ₺  </b>
+          
+      }
+   }
+    
+    <br />
+}
