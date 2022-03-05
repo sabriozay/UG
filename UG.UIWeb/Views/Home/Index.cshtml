@@ -1,23 +1,49 @@
-﻿@model List<UG.DAL.Entities.Customer>
+﻿@model UG.UIWeb.Models.Home.IndexVM
 
 @{
     ViewData["Title"] = "Home Page";
 }
 
-@foreach (var item in Model)
-{
-    
-    <b>@item.UNVAN --</b>
+<div class="text-center">
 
-   @foreach (var QuantityItem in item.CustomerInvoices)
-   {
-       @if (QuantityItem!=null)
-      {
-       <b>@QuantityItem.FATURA_TARIHI --</b>
-       <b>@QuantityItem.FATURA_TUTARI ₺  </b>
+    <form asp-action="Index" asp-controller="home"  name="myform" method="post">
+
+        <div class="row">
+            <div class="col-md-2">
+                <select style="float:left" name="MUSTERI_ID" id ="fname">
+
+                    @foreach (var item in Model.Customers)
+                    {
+                        <option value="@item.ID">@item.UNVAN</option>
+                    }
+                </select>
+
+
+            </div>
+
+            <div class="col-md-4">
+               <input style="float:left" type="submit" value="Getir" />
+
+
+            </div>
           
-      }
-   }
-    
-    <br />
-}
+
+        </div>
+           <div class="row">
+            <div class="col-md-12">
+                @if (Model.bestQuantity!=null)
+               {
+              <p style="float:left">Fatura Tarihi : @Model.bestQuantity.FATURA_TARIHI.ToString("dd-MM-yyyy")  Fatura Tutarı : @Model.bestQuantity.FATURA_TUTARI  ₺ </p>
+                   
+               }
+
+
+            </div>
+
+           
+          
+
+        </div>
+
+    </form>
+</div>  

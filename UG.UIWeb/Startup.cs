@@ -28,10 +28,14 @@ namespace UG.UIWeb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddDbContext<UG.DAL.Contexts.Context>(option => option.UseSqlServer(Configuration.GetConnectionString("WebCS")));
-            //services.AddScoped<IRepository<>, Repository<>>();
-            //services.AddScoped<IRepository, Repository>();
+
+            services.AddControllers();
+            services.AddDbContext<UG.DAL.Dapper.AppContext>(options =>
+                      options.UseSqlServer(
+                          Configuration.GetConnectionString("WebCS")));
+            services.AddScoped<IDapper, Dapperr>();
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
         }
 

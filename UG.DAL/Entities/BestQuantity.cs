@@ -4,11 +4,10 @@ using System.Text;
 
 namespace UG.DAL.Entities
 {
-    public class BestQuantity
+    public class BestQuantity:CustomerInvoice
     {
 
-        public string Name { get; set; }
-        public DateTime Date { get; set; }
-        public decimal Quantity { get; set; }
+        public Decimal quantity { get; set; }
+        public int MUSTERI_ID { get; set; }
     }
 }
