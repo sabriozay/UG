@@ -35,6 +35,11 @@ namespace UG.UIWeb.Controllers
             ındexVM.Customers = Model;
             return View(ındexVM);
         }
+        /// <summary>
+        /// Secilen Musteriye göre PickQuantity sp'sini cağırıyor
+        /// </summary>
+        /// <param name="MUSTERI_ID"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Index(int MUSTERI_ID)
         {
